@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby_executable_hooks
+
+Dir["#{File.dirname(__FILE__)}/app/**/*.rb"].each { |f| require f }
+
+ENV['app_root'] = "#{File.dirname(__FILE__)}"
+ToyRobot::ToyRobot.new.something
