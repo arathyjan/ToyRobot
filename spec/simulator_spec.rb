@@ -16,7 +16,7 @@ RSpec.describe Simulator do
       end
 
       it 'creates list of Command from the list of command string ignoring exceptions' do
-        expect(CommandFactory).to receive(:parse).exactly(3).times
+        expect(CommandFactory).to receive(:create).exactly(3).times
         start
       end
     end

@@ -6,7 +6,7 @@ class Simulator
     CommandFileReader
       .read!(INPUT_FILE_NAME)
       .each do |command_string|
-          command = CommandFactory.parse(command_string)
+          command = CommandFactory.create(command_string)
         rescue InvalidCommandError => e
           p e
           next
