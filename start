@@ -3,4 +3,4 @@
 Dir["#{File.dirname(__FILE__)}/app/**/*.rb"].each { |f| require f }
 
 ENV['app_root'] = "#{File.dirname(__FILE__)}"
-ToyRobot::Simulator.new.start
+Simulator.new.start

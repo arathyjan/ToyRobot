@@ -1,12 +1,10 @@
 # frozen_string_literal: true
 
-module ToyRobot
-  class CommandFileReader
-    class << self
-      def read!(input_file)
-        inputs = File.readlines(input_file)
-        inputs.map(&:strip)
-      end
+class CommandFileReader
+  class << self
+    def read!(input_file)
+      inputs = File.readlines(input_file)
+      inputs.map(&:strip)
     end
   end
 end

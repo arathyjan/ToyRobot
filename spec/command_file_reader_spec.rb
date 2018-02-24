@@ -1,6 +1,6 @@
 require './spec/spec_helper'
 
-RSpec.describe ToyRobot::CommandFileReader do
+RSpec.describe CommandFileReader do
 
   describe '.read!' do
     subject(:read!) { described_class.read!('./spec/input_test.txt') }
