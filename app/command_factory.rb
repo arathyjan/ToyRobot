@@ -7,7 +7,7 @@ module ToyRobot
     class << self
       def parse(command_string)
         return Commands::Place.new if PLACE_COMMAND_REGEX.match? command_string
-        raise InvalidCommandError, 'invalid command #{command_string}'
+        raise InvalidCommandError, "invalid command #{command_string}"
       end
     end
   end
