@@ -5,7 +5,10 @@ class CommandFactory
 
   class << self
     def create(command_string)
-      return Commands::Place.new if PLACE_COMMAND_REGEX.match? command_string
+      if PLACE_COMMAND_REGEX.match? command_string
+        (x, y, direction) = command_string.split(' ')[1].split(',')
+        return Commands::Place.new(x, y, direction)
+      end
       raise InvalidCommandError, "invalid command #{command_string}"
     end
   end

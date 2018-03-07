@@ -13,6 +13,7 @@
 # it.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+require 'pry'
 Dir["#{File.dirname(__FILE__)}/../app/**/*.rb"].each { |f| require f }
 
 RSpec.configure do |config|

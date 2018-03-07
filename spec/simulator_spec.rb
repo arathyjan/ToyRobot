@@ -16,8 +16,23 @@ RSpec.describe Simulator do
       end
 
       it 'creates list of Command from the list of command string ignoring exceptions' do
+        allow(CommandFactory).to receive(:create).and_return(Commands::Place.new(1,2,:EAST))
+
         expect(CommandFactory).to receive(:create).exactly(3).times
         start
+      end
+
+      context 'when command factory returns with list of commands' do
+        let(:command) { Commands::Place.new(1,2,:EAST) }
+
+        it 'execute the command with instance of robot and table top' do
+          allow(CommandFactory).to receive(:create).with('PLACE 1,2,EAST').and_return(command)
+          allow(CommandFactory).to receive(:create).with('SOMETHING').and_raise(InvalidCommandError)
+          allow(CommandFactory).to receive(:create).with('PLACE 1,2,WEST').and_return(command)
+
+          expect(command).to receive(:execute).twice
+          start
+        end
       end
     end
   end
