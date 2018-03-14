@@ -9,7 +9,7 @@ RSpec.describe CommandFactory do
       end
 
       it 'create Place command with right direction and location' do
-        expect(Commands::Place).to receive(new).with(1,2, :EAST)
+        expect(Commands::Place).to receive(:new).with(1,2, :EAST).and_call_original
         described_class.create 'PLACE 1,2,EAST'
       end
 

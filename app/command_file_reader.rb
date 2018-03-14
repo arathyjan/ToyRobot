@@ -5,6 +5,9 @@ class CommandFileReader
     def read!(input_file)
       inputs = File.readlines(input_file)
       inputs.map(&:strip)
+    rescue StandardError => e
+      p e
+      raise e
     end
   end
 end
