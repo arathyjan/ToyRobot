@@ -2,8 +2,8 @@
 require_relative 'command'
 module Commands
   class Report < Command
-    def execute(robot, table_top, robot_location)
-      robot_location.tap do |location|
+    def execute(table_top, location)
+      location.tap do |location|
         OutputProcessor.print(location) unless location.nil?
       end
     end

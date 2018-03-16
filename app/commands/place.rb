@@ -5,8 +5,8 @@ module Commands
       @location = Location.new(Coordinate.new(x, y), direction)
     end
 
-    def execute(robot, table_top, robot_location)
-      table_top.within_boundary?(@location.coordinate) ? @location : robot_location
+    def execute(table_top, location)
+      table_top.within_boundary?(@location.coordinate) ? @location : location
     end
   end
 end

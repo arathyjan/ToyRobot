@@ -2,14 +2,22 @@
 require_relative 'command'
 module Commands
   class Move < Command
-    def execute(robot, table_top, robot_location)
-      return nil if robot_location.nil?
-      
-      robot_direction = robot_location.direction
-      robot_coordinate = robot_location.coordinate
-      (x_offset, y_offset) = Direction.move(robot_direction)
-      new_coordinate = Coordinate.new(robot_coordinate.x + x_offset, robot_coordinate.y + y_offset)
-      table_top.within_boundary?(new_coordinate) ? Location.new(new_coordinate, robot_direction) : robot_location
+    def execute(table_top, location)
+      return nil if location.nil?
+
+      new_location = new_location_from(location)
+      table_top.within_boundary?(new_location.coordinate) ? new_location : location
+    end
+
+    private
+
+    def new_location_from(location)
+      (x_offset, y_offset) = Direction.move(location.direction)
+      new_coordinate = Coordinate.new(
+        location.coordinate.x + x_offset,
+        location.coordinate.y + y_offset
+        )
+      Location.new(new_coordinate, location.direction)
     end
   end
 end

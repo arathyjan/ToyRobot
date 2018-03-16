@@ -7,7 +7,7 @@ RSpec.describe Commands::Place do
     subject(:execute) {
       Commands::Place
       .new(x_coordinate, y_coordinate, direction)
-      .execute(Robot.new, TableTop.new(5, 5), current_location)
+      .execute(TableTop.new(5, 5), current_location)
     }
 
     context 'when coordinates are out of boundary' do

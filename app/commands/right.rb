@@ -2,10 +2,10 @@
 require_relative 'command'
 module Commands
   class Right < Command
-    def execute(robot, table_top, robot_location)
-      return nil if robot_location.nil?
+    def execute(table_top, location)
+      return nil if location.nil?
 
-      Location.new(robot_location.coordinate, Direction.right(robot_location.direction))
+      Location.new(location.coordinate, Direction.right(location.direction))
     end
   end
 end

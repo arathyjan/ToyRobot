@@ -3,7 +3,7 @@ require './spec/spec_helper'
 RSpec.describe Commands::Move do
   describe '.execute' do
     subject(:execute) {
-      Commands::Move.new.execute(Robot.new, 
+      Commands::Move.new.execute(
         TableTop.new(5, 5), 
         current_location)
     }

@@ -4,7 +4,7 @@ RSpec.describe Commands::Left do
   describe '.execute' do
     let(:current_location) { Location.new(Coordinate.new(2, 2), current_direction) } 
     subject(:execute) {
-      Commands::Left.new.execute(Robot.new, 
+      Commands::Left.new.execute(
         TableTop.new(5, 5),
         current_location 
         )
