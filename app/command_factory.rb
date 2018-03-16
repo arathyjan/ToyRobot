@@ -12,6 +12,8 @@ class CommandFactory
       case command_string.to_sym
       when :MOVE
         return Commands::Move.new
+      when :RIGHT
+        return Commands::Right.new
       end
 
       raise InvalidCommandError, "invalid command #{command_string}"
