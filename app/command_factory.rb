@@ -14,6 +14,8 @@ class CommandFactory
         return Commands::Move.new
       when :RIGHT
         return Commands::Right.new
+      when :LEFT
+        return Commands::Left.new
       end
 
       raise InvalidCommandError, "invalid command #{command_string}"

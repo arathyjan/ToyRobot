@@ -4,19 +4,23 @@ class Direction
   ALLOWED_DIRECTIONS = {
     :NORTH => {
       :MOVE =>  [0, 1],
-      :RIGHT => :EAST
+      :RIGHT => :EAST,
+      :LEFT => :WEST
     },
     :EAST => {
       :MOVE =>  [1, 0],
-      :RIGHT => :SOUTH
+      :RIGHT => :SOUTH,
+      :LEFT => :NORTH
     },
     :SOUTH => {
       :MOVE =>  [0, -1],
-      :RIGHT => :WEST
+      :RIGHT => :WEST,
+      :LEFT => :EAST
     },
     :WEST => {
       :MOVE =>  [-1, 0],
-      :RIGHT => :NORTH
+      :RIGHT => :NORTH,
+      :LEFT => :SOUTH
     }
   }
 
@@ -27,6 +31,10 @@ class Direction
 
     def right(direction)
       ALLOWED_DIRECTIONS.fetch(direction).fetch(:RIGHT)
+    end
+
+    def left(direction)
+      ALLOWED_DIRECTIONS.fetch(direction).fetch(:LEFT)
     end
   end
 end

@@ -35,6 +35,12 @@ RSpec.describe CommandFactory do
       end
     end
 
+    context 'parsing Left command' do
+      it 'should parse Left command' do
+        expect(described_class.create 'LEFT').to be_an_instance_of Commands::Left
+      end
+    end
+
     it 'raise exception while trying to parse invalid command string' do
       expect { described_class.create 'INVALID_COMMAND' }.to raise_error InvalidCommandError
     end

@@ -36,4 +36,22 @@ RSpec.describe Direction do
       expect(described_class.right(:SOUTH)).to eq :WEST
     end
   end
+
+  describe '.left' do
+    it 'when EAST return back NORTH' do
+      expect(described_class.left(:EAST)).to eq :NORTH
+    end
+
+    it 'when WEST return back SOUTH' do
+      expect(described_class.left(:WEST)).to eq :SOUTH
+    end
+
+    it 'when NORTH return back WEST' do
+      expect(described_class.left(:NORTH)).to eq :WEST
+    end
+
+    it 'when SOUTH return back EAST' do
+      expect(described_class.left(:SOUTH)).to eq :EAST
+    end
+  end
 end
