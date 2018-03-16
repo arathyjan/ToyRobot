@@ -41,6 +41,12 @@ RSpec.describe CommandFactory do
       end
     end
 
+    context 'parsing Report command' do
+      it 'should parse Report command' do
+        expect(described_class.create 'REPORT').to be_an_instance_of Commands::Report
+      end
+    end
+
     it 'raise exception while trying to parse invalid command string' do
       expect { described_class.create 'INVALID_COMMAND' }.to raise_error InvalidCommandError
     end

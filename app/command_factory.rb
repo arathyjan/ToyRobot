@@ -16,6 +16,8 @@ class CommandFactory
         return Commands::Right.new
       when :LEFT
         return Commands::Left.new
+      when :REPORT
+        return Commands::Report.new
       end
 
       raise InvalidCommandError, "invalid command #{command_string}"
