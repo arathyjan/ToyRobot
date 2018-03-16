@@ -5,6 +5,14 @@ RSpec.describe Simulator do
     let(:input_file) { 'vali_file.txt' }
     subject(:start) { described_class.new.start input_file}
 
+    context 'e2e test' do
+      let(:input_file) { './spec/e2e_input_test.txt' }
+      it 'should print report with appropriate results' do
+        expect(STDOUT).to receive(:puts).with('4,3,SOUTH')
+        start
+      end
+    end
+
     context ' when failed to read input file' do
       it 'throw the error back' do
         allow(CommandFileReader).to receive(:read!).with('invalid_file').and_raise(StandardError)
