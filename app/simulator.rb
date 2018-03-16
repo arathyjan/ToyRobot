@@ -1,15 +1,14 @@
 # frozen_string_literal: true
 class Simulator
-  INPUT_FILE_NAME = './input.txt'
   
   def initialize
     @table_top = TableTop.new(5, 5)
     @robot_location = nil
   end
 
-  def start
+  def start(input_file)
     CommandFileReader
-      .read!(INPUT_FILE_NAME)
+      .read!(input_file)
       .each do |command_string|
           command = CommandFactory.create(command_string)
           @robot_location = command.execute(@table_top, @robot_location)

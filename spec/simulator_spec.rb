@@ -2,7 +2,8 @@ require './spec/spec_helper'
 
 RSpec.describe Simulator do
   describe '.start' do
-    subject(:start) { described_class.new.start}
+    let(:input_file) { 'vali_file.txt' }
+    subject(:start) { described_class.new.start input_file}
 
     context ' when failed to read input file' do
       it 'throw the error back' do
@@ -17,14 +18,14 @@ RSpec.describe Simulator do
       let(:command) { Commands::Place.new(1,2,:EAST) }
 
       before do
-        allow(CommandFileReader).to receive(:read!).with(Simulator::INPUT_FILE_NAME).and_return(command_string_array)
+        allow(CommandFileReader).to receive(:read!).with(input_file).and_return(command_string_array)
         allow(CommandFactory).to receive(:create).with('PLACE 1,2,EAST').and_return(command)
         allow(CommandFactory).to receive(:create).with('SOMETHING').and_raise(InvalidCommandError)
         allow(CommandFactory).to receive(:create).with('PLACE 1,2,WEST').and_return(command)
       end
 
       it 'create array of commands' do
-        expect(CommandFileReader).to receive(:read!).with(Simulator::INPUT_FILE_NAME).and_return(command_string_array)
+        expect(CommandFileReader).to receive(:read!).with(input_file).and_return(command_string_array)
         start
       end
 
