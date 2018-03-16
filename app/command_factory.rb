@@ -6,10 +6,22 @@ class CommandFactory
   class << self
     def create(command_string)
       if PLACE_COMMAND_REGEX.match? command_string
-        (x, y, direction) = command_string.split(' ')[1].split(',')
-        return Commands::Place.new(x.to_i, y.to_i, direction.to_sym)
+        return create_place_command(command_string)
       end
+
+      case command_string.to_sym
+      when :MOVE
+        return Commands::Move.new
+      end
+
       raise InvalidCommandError, "invalid command #{command_string}"
+    end
+
+    private
+
+    def create_place_command(command_string)
+      (x, y, direction) = command_string.split(' ')[1].split(',')
+      Commands::Place.new(x.to_i, y.to_i, direction.to_sym)
     end
   end
 end
